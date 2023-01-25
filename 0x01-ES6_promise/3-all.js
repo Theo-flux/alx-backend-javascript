@@ -8,6 +8,6 @@ export default function handleProfileSignup() {
       const flname = await resp[1]().then((res) => ([res.firstName, res.lastName]));
 
       console.log(bdy, flname[0], flname[1]);
-    })
+    }).catch(() => console.log('Signup system offline'))
   );
 }
