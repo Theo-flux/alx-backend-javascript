@@ -10,10 +10,10 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
     for (let i = 0; i < values; i += 1) {
       if (values[i].status === 'fulfilled') {
         const { status, value } = values[i];
-        arr[i] = { status, value };
+        arr.push({ status, value });
       } else {
         const { status, reason } = values[i];
-        arr[i] = { status, reason };
+        arr.push({ status, reason });
       }
     }
 
