@@ -6,17 +6,14 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
     signUpUser(firstName, lastName),
     uploadPhoto(fileName),
   ]).then((values) => {
-    const arr = [];
-    for (let i = 0; i < values; i += 1) {
-      if (values[i].status === 'fulfilled') {
-        const { status, value } = values[i];
-        arr.push({ status, value });
+    const result = [];
+    values.forEach((element) => {
+      if (element.status === 'fulfilled') {
+        result.push({ status: element.status, value: element.value });
       } else {
-        const { status, reason } = values[i];
-        arr.push({ status, reason });
+        result.push({ status: element.status, value: `${element.reason}` });
       }
-    }
-
-    return arr;
+    });
+    return result;
   });
 }
