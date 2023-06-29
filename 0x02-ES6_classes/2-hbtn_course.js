@@ -13,12 +13,7 @@ export default class HolbertonCourse {
 
     if (!Array.isArray(students))
       throw new TypeError('students must be an array');
-    else if (
-      typeof students.find(student => typeof student !== 'string') !=
-      'undefined'
-    ) {
-      throw new TypeError('students must be an array of strings');
-    } else {
+    else {
       this._students = students;
     }
   }
@@ -54,12 +49,7 @@ export default class HolbertonCourse {
   set students(newStudents) {
     if (!Array.isArray(newStudents))
       throw new TypeError('students must be an array');
-    else if (
-      typeof newStudents.find(student => typeof student !== 'string') !=
-      'undefined'
-    ) {
-      throw new TypeError('students must be an array of strings');
-    } else {
+    else {
       this._students = newStudents;
     }
   }
