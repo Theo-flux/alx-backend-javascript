@@ -5,7 +5,7 @@ export default function cleanSet(setArg, startString) {
   const startStringLen = startString.length;
 
   if (startStringLen === 0) {
-    return abridgedArr.join('-');
+    return "";
   }
   arr.map((el, index) => {
     if (el.slice(0, startStringLen) === startString) {
