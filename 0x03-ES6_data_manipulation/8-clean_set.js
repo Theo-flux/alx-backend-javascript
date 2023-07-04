@@ -4,8 +4,8 @@ export default function cleanSet(setArg, startString) {
   const abridgedArr = [];
   const startStringLen = startString.length;
 
-  if (startStringLen === 0) {
-    return "";
+  if (startString === undefined || startStringLen === 0) {
+    return '';
   }
   arr.map((el, index) => {
     if (el.slice(0, startStringLen) === startString) {
