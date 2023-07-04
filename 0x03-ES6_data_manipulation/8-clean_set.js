@@ -4,11 +4,13 @@ export default function cleanSet(setArg, startString) {
   let abridgedArr = [];
   const startStringLen = startString.length;
 
-  if (startString === undefined || startStringLen === 0) {
+  if (startString === undefined || startString.length === 0) {
     return '';
   }
   abridgedArr = arr
     .filter(el => (el !== undefined ? el.startsWith(startString) : ''))
-    .map(el => (el !== undefined ? el.slice(startStringLen) : ''));
-  return abridgedArr.join('-');
+    .map(el => (el !== undefined ? el.slice(startStringLen) : ''))
+    .join('-');
+
+  return abridgedArr;
 }
