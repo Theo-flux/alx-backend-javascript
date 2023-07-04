@@ -1,9 +1,9 @@
 export default function updateStudentGradeByCity(arr, arg, update) {
-  const newArr = arr.filter(el => el.location == arg);
+  const newArr = arr.filter(el => el.location === arg);
 
   newArr.map(el => {
     update.map(u => {
-      if (u.studentId == el.id) el.grade = u.grade;
+      if (u.studentId === el.id) el.grade = u.grade;
     });
   });
 

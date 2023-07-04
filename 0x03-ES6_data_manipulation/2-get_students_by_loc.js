@@ -1,3 +1,3 @@
 export default function getStudentsByLocation(arr, arg) {
-  return arr.filter(el => el.location == arg);
+  return arr.filter((el) => el.location === arg);
 }
