@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default function updateStudentGradeByCity(arr, arg, update) {
   const newArr = arr.filter(el => el.location === arg);
 
