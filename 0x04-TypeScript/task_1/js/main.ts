@@ -47,6 +47,8 @@ const printTeacher = (
   return `${firstName[0]}. ${lastName}`;
 };
 
+console.log(printTeacher('john', 'doe'));
+
 class StudentClass implements IStudent {
   firstName: string;
   lastName: string;
