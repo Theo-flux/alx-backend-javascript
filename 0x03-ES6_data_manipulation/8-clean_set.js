@@ -1,12 +1,16 @@
+/* eslint-disable */
 export default function cleanSet(setArg, startString) {
   const arr = [...setArg];
-  const startStrLen = startString.length;
+  const abridgedArr = [];
+  const startStringLen = startString.length;
 
-  if (startString === undefined || startStrLen === 0) {
-    return '';
+  if (startStringLen === 0) {
+    return abridgedArr.join('-');
   }
-  return arr
-    .filter((el) => (el !== undefined ? el.slice(0, startStrLen) : ''))
-    .map((el) => (el !== undefined ? el.slice(startStrLen) : ''))
-    .join('-');
+  arr.map((el, index) => {
+    if (el.slice(0, startStringLen) === startString) {
+      abridgedArr[index] = el.slice(startStringLen);
+    }
+  });
+  return abridgedArr.join('-');
 }
