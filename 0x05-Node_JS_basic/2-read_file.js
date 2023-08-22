@@ -29,8 +29,8 @@ function countStudents(fileName) {
       if (key !== 'field') {
         console.log(
           `Number of students in ${key}: ${value}. List: ${students[key].join(
-            ', '
-          )}`
+            ', ',
+          )}`,
         );
       }
     }
