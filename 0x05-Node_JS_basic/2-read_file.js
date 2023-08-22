@@ -19,9 +19,9 @@ function countStudents(path) {
       }
     }
 
-    NUMBER_OF_STUDENT = NUMBER_OF_STUDENT;
+    NUMBER_OF_STUDENT = NUMBER_OF_STUDENT - 1;
 
-    console.log(`Number of course: ${NUMBER_OF_STUDENT--}`);
+    console.log(`Number of course: ${NUMBER_OF_STUDENT}`);
     for (const [key, value] of Object.entries(course)) {
       if (key !== 'field') {
         console.log(
