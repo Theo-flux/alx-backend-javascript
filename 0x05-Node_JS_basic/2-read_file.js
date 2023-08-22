@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-function countcourse(path) {
+function countStudents(path) {
   try {
     let course = {};
     const content = fs.readFileSync(path, 'utf-8');
@@ -19,9 +19,9 @@ function countcourse(path) {
       }
     }
 
-    NUMBER_OF_STUDENT = NUMBER_OF_STUDENT - 1
+    NUMBER_OF_STUDENT = NUMBER_OF_STUDENT;
 
-    console.log('Number of course: ' + NUMBER_OF_STUDENT);
+    console.log('Number of course: ' + NUMBER_OF_STUDENT--);
     for (const [key, value] of Object.entries(course)) {
       if (key !== 'field')
         console.log(
@@ -35,4 +35,4 @@ function countcourse(path) {
   }
 }
 
-module.exports = countcourse;
+module.exports = countStudents;
