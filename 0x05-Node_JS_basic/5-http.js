@@ -56,10 +56,10 @@ const app = http.createServer((req, res) => {
     res.end('Hello Holberton School!');
   } else if (url === '/students') {
     countStudents('./database.csv')
-      .then(data => {
+      .then((data) => {
         res.end(`This is the list of our students\n${data}`);
       })
-      .catch(err => {
+      .catch((err) => {
         res.statusCode = 400;
         res.end(err);
       });
