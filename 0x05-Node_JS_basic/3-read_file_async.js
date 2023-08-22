@@ -1,7 +1,8 @@
 const { readFile } = require('fs');
 
-function countcourse(fileName) {
+function countStudents(fileName) {
   const course = {};
+  const fields = {};
   let length = 0;
   return new Promise((resolve, reject) => {
     readFile(fileName, (error, data) => {
@@ -18,14 +19,21 @@ function countcourse(fileName) {
             } else {
               course[field[3]] = [field[0]];
             }
+            if (Object.prototype.hasOwnProperty.call(fields, field[3])) {
+              fields[field[3]] += 1;
+            } else {
+              fields[field[3]] = 1;
+            }
           }
         }
         const l = length - 1;
         console.log(`Number of course: ${l}`);
-        for (const [key, value] of Object.entries(course)) {
+        for (const [key, value] of Object.entries(fields)) {
           if (key !== 'field') {
             console.log(
-              `Number of course in ${key}: ${value}. List: ${value.join(', ')}`
+              `Number of course in ${key}: ${value}. List: ${course[key].join(
+                ', '
+              )}`
             );
           }
         }
@@ -35,4 +43,4 @@ function countcourse(fileName) {
   });
 }
 
-module.exports = countcourse;
+module.exports = countStudents;
