@@ -52,15 +52,17 @@ const app = http.createServer((req, res) => {
   res.setHeader('Content-Type', 'text/plain');
 
   if (url === '/') {
-    res.end('Hello Holberton School!');
+    res.write('Hello Holberton School!');
+    res.end();
   } else if (url === '/students') {
+    res.write('This is the list of our students\n');
     countStudents(process.argv[2].toString())
       .then((data) => {
         res.end(`This is the list of our students\n${data}`);
       })
       .catch(() => {
         res.statusCode = 404;
-        res.send('This is the list of our students\nCannot load the database');
+        res.send('Cannot load the database');
       });
   }
 });
