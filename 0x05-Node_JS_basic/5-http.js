@@ -1,10 +1,15 @@
+const http = require('http');
 const { readFile } = require('fs');
+
+const PORT = 1245;
+const HOSTNAME = 'localhost';
 
 function countStudents(fileName) {
   const course = {};
   const fields = {};
   let length = 0;
   return new Promise((resolve, reject) => {
+    let response = '';
     readFile(fileName, (error, data) => {
       if (error) {
         reject(Error('Cannot load the database'));
@@ -27,20 +32,40 @@ function countStudents(fileName) {
           }
         }
         const l = length - 1;
-        console.log(`Number of students: ${l}`);
+        response += `Number of students: ${l}\n`;
         for (const [key, value] of Object.entries(fields)) {
           if (key !== 'field') {
-            console.log(
-              `Number of students in ${key}: ${value}. List: ${course[key].join(
-                ', '
-              )}`
-            );
+            response += `Number of students in ${key}: ${value}. `;
+            response += `List: ${course[key].join(', ')}\n`;
           }
         }
-        resolve(`Number of students: ${l}\n`);
+        resolve(response);
       }
     });
   });
 }
 
 module.exports = countStudents;
+
+const app = http.createServer((req, res) => {
+  const { url } = req;
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+
+  if (url === '/') {
+    res.end('Hello Holberton School!');
+  } else if (url === '/students') {
+    countStudents('./database.csv')
+      .then(data => {
+        res.end(`This is the list of our students\n${data}`);
+      })
+      .catch(err => {
+        res.statusCode = 400;
+        res.end(err);
+      });
+  }
+});
+
+app.listen(PORT, HOSTNAME, () => {});
+
+module.exports = app;
