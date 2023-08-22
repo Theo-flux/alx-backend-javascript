@@ -4,7 +4,7 @@ function countcourse(path) {
   try {
     let course = {};
     const content = fs.readFileSync(path, 'utf-8');
-    const arr = content.toString().split('\n').slice(1);
+    const arr = content.toString().split('\n');
     let NUMBER_OF_STUDENT = 0;
 
     for (let i = 0; i < arr.length; i += 1) {
@@ -19,9 +19,16 @@ function countcourse(path) {
       }
     }
 
+    NUMBER_OF_STUDENT = NUMBER_OF_STUDENT - 1
+
     console.log('Number of course: ' + NUMBER_OF_STUDENT);
     for (const [key, value] of Object.entries(course)) {
-        console.log(`Number of students in ${key}: ${value.length}. List: ${value.join(", ")}`)
+      if (key !== 'field')
+        console.log(
+          `Number of students in ${key}: ${value.length}. List: ${value.join(
+            ', '
+          )}`
+        );
     }
   } catch (error) {
     throw new Error('Cannot load the database');
