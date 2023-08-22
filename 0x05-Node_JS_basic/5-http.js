@@ -58,7 +58,7 @@ const app = http.createServer((req, res) => {
     res.write('This is the list of our students\n');
     countStudents(process.argv[2].toString())
       .then((data) => {
-        res.end(`This is the list of our students\n${data}`);
+        res.end(data);
       })
       .catch(() => {
         res.statusCode = 404;
