@@ -32,8 +32,8 @@ function countStudents(fileName) {
           if (key !== 'field') {
             console.log(
               `Number of course in ${key}: ${value}. List: ${course[key].join(
-                ', '
-              )}`
+                ', ',
+              )}`,
             );
           }
         }
