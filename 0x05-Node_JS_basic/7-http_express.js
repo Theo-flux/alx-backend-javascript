@@ -1,8 +1,8 @@
-const http = require('http');
+const express = require('express');
 const { readFile } = require('fs');
 
+const app = express();
 const PORT = 1245;
-const HOSTNAME = 'localhost';
 
 function countStudents(fileName) {
   const course = {};
@@ -35,7 +35,11 @@ function countStudents(fileName) {
         response.push(`Number of students: ${l}`);
         for (const [key, value] of Object.entries(fields)) {
           if (key !== 'field') {
-            response.push(`Number of students in ${key}: ${value}. List: ${course[key].join(', ')}`);
+            response.push(
+              `Number of students in ${key}: ${value}. List: ${course[key].join(
+                ', ',
+              )}`,
+            );
           }
         }
         resolve(response.join('\n'));
@@ -44,27 +48,21 @@ function countStudents(fileName) {
   });
 }
 
-module.exports = countStudents;
-
-const app = http.createServer((req, res) => {
-  const { url } = req;
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-
-  if (url === '/') {
-    res.end('Hello Holberton School!');
-  } else if (url === '/students') {
-    countStudents(process.argv[2].toString())
-      .then((data) => {
-        res.end(`This is the list of our students\n${data}`);
-      })
-      .catch(() => {
-        res.statusCode = 404;
-        res.send('This is the list of our students\nCannot load the database');
-      });
-  }
+app.get('/', (req, res) => {
+  res.send('Hello Holberton School!');
 });
 
-app.listen(PORT, HOSTNAME, () => {});
+app.get('/students', (req, res) => {
+  countStudents(process.argv[2].toString())
+    .then((data) => {
+      res.send(['This is the list of our students\n', data].join(''));
+    })
+    .catch(() => {
+      res.statusCode = 404;
+      res.send('This is the list of our students\nCannot load the database');
+    });
+});
+
+app.listen(PORT, () => {});
 
 module.exports = app;
