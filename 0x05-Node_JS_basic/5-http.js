@@ -9,7 +9,7 @@ function countStudents(fileName) {
   const fields = {};
   let length = 0;
   return new Promise((resolve, reject) => {
-    let response = '';
+    const response = [];
     readFile(fileName, (error, data) => {
       if (error) {
         reject(Error('Cannot load the database'));
@@ -32,14 +32,13 @@ function countStudents(fileName) {
           }
         }
         const l = length - 1;
-        response += `Number of students: ${l}\n`;
+        response.push(`Number of students: ${l}`);
         for (const [key, value] of Object.entries(fields)) {
           if (key !== 'field') {
-            response += `Number of students in ${key}: ${value}. `;
-            response += `List: ${course[key].join(', ')}\n`;
+            response.push(`Number of students in ${key}: ${value}. List: ${course[key].join(', ')}`);
           }
         }
-        resolve(response);
+        resolve(response.join('\n'));
       }
     });
   });
