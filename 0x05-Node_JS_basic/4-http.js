@@ -6,7 +6,7 @@ const HOSTNAME = 'localhost';
 const app = http.createServer((_, res) => {
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello Holberton School!\n');
+  res.end('Hello Holberton School!');
 });
 
 app.listen(PORT, HOSTNAME, () => {});
