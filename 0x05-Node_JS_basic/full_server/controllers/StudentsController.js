@@ -32,7 +32,7 @@ class StudentsController {
         const fields = result[0];
         const firstNameObj = result[1];
 
-        if (fields.has(major)) {
+        if (new Set('CS', 'SWE').has(major)) {
           const output = `List: ${firstNameObj[major].join(', ')}`;
           res.statusCode = 200;
           res.send(output);
