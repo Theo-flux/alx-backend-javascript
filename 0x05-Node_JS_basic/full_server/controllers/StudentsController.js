@@ -6,7 +6,6 @@ class StudentsController {
   static getAllStudents(req, res) {
     readDatabase(fileName.toString())
       .then((result) => {
-        res.statusCode = 200;
         const firstNameObj = result[1];
         const output = ['This is the list of our students'];
 
@@ -17,6 +16,7 @@ class StudentsController {
             )}`,
           );
         }
+        res.statusCode = 200;
         res.send(output.join('\n'));
       })
       .catch(() => {
@@ -33,8 +33,8 @@ class StudentsController {
         const firstNameObj = result[1];
 
         if (fields.has(major)) {
-          res.statusCode = 200;
           const output = `List: ${firstNameObj[major].join(', ')}`;
+          res.statusCode = 200;
           res.send(output);
         } else {
           res.statusCode = 500;
