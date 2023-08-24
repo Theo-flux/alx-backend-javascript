@@ -1,7 +1,7 @@
 const chai = require('chai');
 const calculateNumber = require('./1-calcul');
 
-const { expect } = chai;
+const expect = chai.expect;
 
 describe('calculateNumber', () => {
   it('shoud return 6 when type = SUM, a = 1.4, and b = 4.5', () => {
