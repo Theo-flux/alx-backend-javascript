@@ -5,10 +5,10 @@ const sendPaymentRequestToApi = require('./3-payment');
 describe('sendPaymentRequestToApi', () => {
   it('should spy on utils.calculatnumber', () => {
     const mySpy = sinon.spy(Utils, 'calculateNumber');
-    sendPaymentRequestToApi(1, 2);
+    sendPaymentRequestToApi(100, 20);
 
     sinon.assert.calledOnce(mySpy);
-    sinon.assert.calledOnceWithExactly(mySpy, 'SUM', 1, 2);
+    sinon.assert.calledOnceWithExactly(mySpy, 'SUM', 100, 20);
 
     mySpy.restore();
   });
