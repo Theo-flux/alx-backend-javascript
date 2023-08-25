@@ -3,7 +3,7 @@ const request = require('request');
 
 const { expect } = chai;
 
-describe('express app', () => {
+describe('Index Page', () => {
   const uri = 'http://localhost:7865/';
   const method = 'GET';
 

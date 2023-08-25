@@ -12,7 +12,7 @@ app.get('/cart/:id([0-9]+)', (req, res) => {
   const id = req.params.id;
 
   res.statusCode = 200;
-  res.send('Payment methods for cart: ' + id);
+  res.send('Payment methods for cart ' + id);
 });
 
 app.listen(PORT, () => {
