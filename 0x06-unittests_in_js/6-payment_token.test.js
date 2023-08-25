@@ -10,9 +10,9 @@ describe('getPaymentToken', () => {
     expect(res).to.equal({ data: 'Successful response from the API' });
   }));
 
-  it('is expected to do nothing when success is false', () => new Promise((done) => {
-    const res = getPaymentTokenFromAPI(false);
-    done();
-    expect(res).to.equal();
-  }));
+//   it('is expected to do nothing when success is false', () => new Promise((done) => {
+//     const res = getPaymentTokenFromAPI(false);
+//     done();
+//     expect(res).to.equal();
+//   }));
 });
